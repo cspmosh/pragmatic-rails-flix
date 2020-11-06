@@ -3,7 +3,7 @@
   <section class="movie">
     <div class="summary">
       <h2>
-        <%= movie.name %>
+        <%= link_to(movie.name, movie) %>
       </h2>
       <h3>
         <%= gross(movie) %>
