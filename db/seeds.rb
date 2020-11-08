@@ -136,5 +136,15 @@ Movie.create!([
     released_on: "2017-06-02",
     rating: "PG-13",
     total_gross: 821_847_012
+  },
+  {
+    name: "FartBoy",
+    description:
+    %{
+      A daring young boy full of gaseous energy is challenged by his older brothers whose jealousy for his super powers knows no bounds.
+    }.squish,
+    released_on: "2017-06-02",
+    rating: "PG",
+    total_gross: 0
   }
 ])
