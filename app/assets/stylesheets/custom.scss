@@ -110,7 +110,7 @@ header {
 // Movies Index Page
 
 section.movie {
-	@extend .row;
+	display: flex;
 	margin-bottom: 1.5rem;
 	padding-bottom: 1em;
 	border-bottom: 1px dotted $border-color;
