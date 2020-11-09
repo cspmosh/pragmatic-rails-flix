@@ -181,6 +181,9 @@ Movie.create!([
     }.squish,
     released_on: "2017-06-02",
     rating: "PG",
-    total_gross: 0
+    total_gross: 0,
+    director: "Josh Turner",
+    duration: "141 min",
+    image_file_name: "placeholder.png"
   }
 ])
