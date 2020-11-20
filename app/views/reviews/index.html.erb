@@ -3,7 +3,7 @@
     <li>
       <%= render "shared/stars", percent: review.stars_as_percent %>
       <p>
-        <%= review.name %>
+        <%= link_to(review.name, edit_movie_review_path(review.movie_id, review)) %>
         <span class="date">
           <%= time_ago_in_words(review.created_at) %> ago
         </span>
@@ -13,4 +13,8 @@
       </p>
     </li>
   <% end %>
+
+  <section class="admin">
+    <%= link_to "Add New Review", new_movie_review_path, class: "button" %>
+  </section>
 </ul>
