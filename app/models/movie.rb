@@ -16,7 +16,15 @@ class Movie < ApplicationRecord
     Movie.where("released_on <= ?", Time.now).order("released_on desc")
   end
 
+  def average_stars
+    reviews.average(:stars) || 0.0
+  end
+
+  def average_stars_as_percent
+    (self.average_stars / 5) * 100.0
+  end
+
   def flop?
-    total_gross.blank? || total_gross < 250_000_000
+    (total_gross.blank? || total_gross < 250_000_000) && average_stars < 4
   end
 end
