@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_21_132823) do
+ActiveRecord::Schema.define(version: 2020_12_29_201348) do
 
   create_table "movies", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_12_21_132823) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "reviews", "movies"
