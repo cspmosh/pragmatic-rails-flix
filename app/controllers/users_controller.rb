@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   before_action :require_signin, except: [:new, :create]
-  before_action :require_correct_user, only: [:edit, :update, :destroy]
+  before_action :require_correct_user, only: [:edit, :update]
+  before_action :require_admin, only: [:destroy]
 
   def index
     @users = User.all
@@ -36,16 +37,20 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    session[:user_id] = nil
+    user = User.find(params[:id])
+    user.destroy
     redirect_to movies_path, alert: "Account successfully deleted!"
   end
 
 private
 
+  def require_admin
+    redirect_to movies_path, alert: "Unauthorized access!" unless current_user_admin?
+  end
+
   def require_correct_user
     @user = User.find(params[:id])
-    redirect_to root_path unless current_user?(@user)
+    redirect_to root_path unless current_user?(@user) || current_user_admin?
   end
 
   def user_params

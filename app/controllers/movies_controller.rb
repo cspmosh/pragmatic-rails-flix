@@ -48,8 +48,4 @@ private
     params.require(:movie)
       .permit(:name, :description, :rating, :released_on, :total_gross, :director, :duration, :image_file_name)
   end
-
-  def require_admin
-    redirect_to movies_path, alert: "Unauthorized access!" unless current_user_admin?
-  end
 end
