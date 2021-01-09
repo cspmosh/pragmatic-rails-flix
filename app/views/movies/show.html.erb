@@ -2,7 +2,7 @@
   <div class="image">
     <%= image_tag @movie.image_file_name %>
   </div>
-  
+
   <div class="details">
     <h1><%= @movie.name %></h1>
     <h2>
@@ -41,7 +41,8 @@
       <ul>
         <% @fans.each do |user| %>
           <li>
-            <%= link_to user.name, user %>
+            <%= profile_image(user, size: 35) %>
+            <%= link_to user.username, user %>
           </li>
         <% end %>
       </ul>
