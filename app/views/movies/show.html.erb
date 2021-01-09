@@ -2,11 +2,13 @@
   <div class="image">
     <%= image_tag @movie.image_file_name %>
   </div>
+  
   <div class="details">
     <h1><%= @movie.name %></h1>
     <h2>
       <%= year_of(@movie) %> &bull; <%= @movie.rating %>
     </h2>
+
     <div class="reviews">
       <span class="stars">
         <%= render "shared/stars", percent: @movie.average_stars_as_percent %>
@@ -16,6 +18,7 @@
     <p>
       <%= @movie.description %>
     </p>
+
     <table>
       <tr>
         <th>Director:</th>
@@ -31,7 +34,21 @@
       </tr>
     </table>
   </div>
+
+  <aside>
+    <% if @fans.present? %>
+      <h4>Fans</h4>
+      <ul>
+        <% @fans.each do |user| %>
+          <li>
+            <%= link_to user.name, user %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </aside>
 </section>
+
 <% if current_user_admin? %>
   <section class="admin">
     <%= link_to "Edit", edit_movie_path(@movie), class: "button" %>
