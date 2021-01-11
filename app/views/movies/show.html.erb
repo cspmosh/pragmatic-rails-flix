@@ -1,6 +1,12 @@
 <section class="movie-details">
   <div class="image">
     <%= image_tag @movie.image_file_name %>
+    <div class="faves">
+      <%= button_to "♥️ Fave", movie_favorites_path(@movie) %>
+      <div class="count">
+        <%= @movie.favorites.size %>
+      </div>
+    </div> 
   </div>
 
   <div class="details">
