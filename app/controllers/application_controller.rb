@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
 private
 
+  def require_admin
+    redirect_to movies_path, alert: "Unauthorized access!" unless current_user_admin?
+  end
+
   def require_signin
     unless current_user
       session[:intended_url] = request.url

@@ -46,10 +46,6 @@ class UsersController < ApplicationController
 
 private
 
-  def require_admin
-    redirect_to movies_path, alert: "Unauthorized access!" unless current_user_admin?
-  end
-
   def require_correct_user
     @user = User.find(params[:id])
     redirect_to root_path unless current_user?(@user) || current_user_admin?
