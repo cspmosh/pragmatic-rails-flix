@@ -14,4 +14,12 @@ module MoviesHelper
   def year_of(movie)
     movie.released_on&.year
   end
+  
+  def nav_link_to(movie_filter, url)
+    if current_page?(url)
+      link_to movie_filter, url, class: "active"
+    else
+      link_to movie_filter, url
+    end
+  end
 end
