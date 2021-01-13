@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :favorites
   end
 
+  get "movies/filter/:filter" => "movies#index", as: "movies_filter"
+  
   resource :session, only: [:new, :create, :destroy]
   resources :users
   
