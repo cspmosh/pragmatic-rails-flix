@@ -11,6 +11,14 @@ module MoviesHelper
     movie.flop? ? "Flop!" : number_to_currency(movie.total_gross, precision: 0)
   end
 
+  def movie_image(movie)
+    if movie.movie_image.present? 
+      image_tag(movie.movie_image)
+    else
+      image_tag("placeholder.png")
+    end
+  end
+
   def year_of(movie)
     movie.released_on&.year
   end
