@@ -3,7 +3,7 @@
   <% @movies.each do |movie| %>
     <div class="movie">
       <div class="image">
-        <%= image_tag movie.image_file_name %>
+        <%= movie_image(movie) %>
       </div>
       <span class="title"><%= movie.name %></span>
     </div>
