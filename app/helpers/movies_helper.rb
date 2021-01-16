@@ -12,8 +12,8 @@ module MoviesHelper
   end
 
   def movie_image(movie)
-    if movie.movie_image.present? 
-      image_tag(movie.movie_image)
+    if movie.movie_image.attached? 
+      image_tag(movie.movie_image.variant(resize_to_limit: [150, nil]))
     else
       image_tag("placeholder.png")
     end
